@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,12 +22,13 @@ import com.tech.freak.wizardpager.ui.StepPagerStrip;
 
 import java.util.List;
 
-public class ConfigWizardActivity extends ActionBarActivity implements
+public class ConfigWizardActivity extends AppCompatActivity implements
         PageFragmentCallbacks, ReviewFragment.Callbacks, ModelCallbacks {
 
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
 
+    @SuppressWarnings("unused")
     private boolean mEditingAfterReview;
 
 
@@ -57,9 +58,9 @@ public class ConfigWizardActivity extends ActionBarActivity implements
 
         mWizardModel.registerListener(this);
         mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
-        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager = findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
-        mStepPagerStrip = (StepPagerStrip) findViewById(R.id.strip);
+        mStepPagerStrip = findViewById(R.id.strip);
         mStepPagerStrip
                 .setOnPageSelectedListener(new StepPagerStrip.OnPageSelectedListener() {
                     @Override
@@ -87,8 +88,8 @@ public class ConfigWizardActivity extends ActionBarActivity implements
             }
         });
 
-        mNextButton = (Button) findViewById(R.id.next_button);
-        mPrevButton = (Button) findViewById(R.id.prev_button);
+        mNextButton = findViewById(R.id.next_button);
+        mPrevButton = findViewById(R.id.prev_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
